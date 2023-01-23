@@ -4,6 +4,7 @@ author: "siyu"
 output: html_document
 date: "2023-01-13"
 ---
+
 ```{r}
 library(tidyverse)
 ```
@@ -28,14 +29,45 @@ ggplot(data = mpg) +
 
 Exercise 3.5.1
 
-1. 
+1.  
+
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_wrap(~ cty)
 ```
-2. 
+
+2.  
+
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = drv, y = cyl))
+#drv and cyl are drive train and cylinder that does not exist in the data set. 
 ```
+
+3. 
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ .)
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(. ~ cyl)
+# the dots make sure that the graph only has a single axis variable that will be used for for all the plots. 
+```
+
+4. 
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)
+#In this case we are trying to figure out how one variable contributes to the divergence of that cluster. Too many colors can be confusing. Faceting makes the data clearer. 
+```
+
+5. 
+nrow and ncol sets the number of rows and columns. 
+" The other argument that controls the layout is as.table. There are other arguments that affect the scaling of axes and location of labels, but they do not affect the actual layout of the grid/array of plots. (from answer key)"
+
+6. 
+most grids are horizontally oriented, which is easier for people to read. 
