@@ -1,5 +1,5 @@
 ---
-title: "Visualizing Starwars characters"
+title: "Visualizing Star Wars characters"
 author: "Siyu(ish)"
 format: html
 editor: visual
@@ -62,7 +62,7 @@ ggplot(data = starwars, mapping = aes(x=height)) +
 
 ```{r}
 #| label: num-cat
-ggplot(data = starwars, mapping = aes(x=gender, y=height, color=species)) +
+ggplot(data = starwars, mapping = aes(x=height, y=gender, color=species)) +
   geom_point()
 ```
 
@@ -80,10 +80,11 @@ ggplot(data=starwars)+
 
 ```{r}
 #| label: cat-cat
-
+ggplot(data = starwars, mapping = aes(x=eye_color, y=homeworld, color=sex)) +
+  geom_point()
 ```
 
-Interpretation goes here...
+In the graph above, the x-axis is eye color and the y-axis is home world of the characters. Each point is a character. The color of the points stands for the sex of the characters. 
 
 8.  Pick two numerical variables and two categorical variables and make a visualization that incorporates all of them and provide an interpretation with your answer.
 
@@ -91,7 +92,11 @@ Interpretation goes here...
 
 ```{r}
 #| label: multi
+ggplot(data = starwars, mapping = aes(x=sex, y=height, color=hair_color, size=birth_year)) +
+  geom_point()+
+  geom_smooth()
 
+  
 ```
 
-Interpretation goes here...
+In the graph above, the x-axis is sex, and the y-axis is the height. Each point is a character from the Stat Wars series. The colors of the points stand for the hair color of the characters, and the size of the points stands for the birth year of the characters. 
